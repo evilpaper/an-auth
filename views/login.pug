@@ -1,0 +1,28 @@
+extends base
+
+block vars
+  - var title = 'Login';
+
+block body
+  section
+    h1 Welcome.
+    if error
+      p.error #{error}
+    form.stack(method="post")
+      input(type="hidden", name="_csrf", value=csrfToken)
+      label(for="email") Email
+        input#email(
+          type="email",
+          name="email",
+          placeholder="Email",
+          required,
+          autofocus
+        )
+      label(for="password") Password
+        input#password.form-control(
+          type="password",
+          name="password",
+          placeholder="Password",
+          required
+        )
+      button(type="submit") Sign in
