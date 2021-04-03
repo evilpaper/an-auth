@@ -75,6 +75,6 @@ app.get("/dashboard", (req, res) => {
 // so we can run it locally and play around with it.
 app.listen(port, () => {
   console.log("");
-  console.log("The server is listening to port " + port);
+  console.log("\x1b[36m%s\x1b[0m", "The server is listening to port " + port);
   console.log("");
 });
