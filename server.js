@@ -10,6 +10,9 @@ const app = express();
 // Create a binding for the port we will use
 const port = 3000;
 
+const settings = require("./settings");
+const sessions = require("client-sessions");
+
 mongoose.connect("mongodb://localhost/an-auth");
 
 let User = mongoose.model(
@@ -27,6 +30,13 @@ app.set("staticDirectory", path.join(__dirname, "static"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/static", express.static(app.get("staticDirectory")));
+app.use(
+  sessions({
+    cookieName: "session",
+    secret: settings.SESSION_SECRET_KEY,
+    duration: settings.SESSION_DURATION,
+  })
+);
 
 app.get("/", (req, res) => {
   res.render("index");
@@ -63,6 +73,7 @@ app.post("/login", (req, res) => {
         error: "Incorrect email / password.",
       });
     }
+    req.session.userId = user._id;
     res.redirect("/dashboard");
   });
 });
