@@ -111,3 +111,7 @@ button {
 .authlink {
   color: var(--grey);
 }
+
+.tagline {
+  margin-top: 2em;
+}

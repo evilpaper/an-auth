@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 // Define an express application
 const app = express();
@@ -47,6 +48,9 @@ app.get("/register", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
+  let hash = bcrypt.hashSync(req.body.password, 14);
+  req.body.password = hash;
+
   let user = new User(req.body);
 
   user.save((err) => {
