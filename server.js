@@ -94,7 +94,7 @@ app.get("/dashboard", (req, res, next) => {
     if (!user) {
       return res.redirect("/login");
     }
-    res.render("dashboard");
+    res.render("dashboard", { user: user });
   });
 });
 
