@@ -38,6 +38,36 @@ app.use(
     duration: settings.SESSION_DURATION,
   })
 );
+app.use((req, res, next) => {
+  if (!(req.session && req.session.userId)) {
+    return next();
+  }
+
+  User.findById(req.session.userId, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+
+    if (!user) {
+      return next();
+    }
+
+    user.password = undefined;
+
+    req.user = user;
+    res.locals.user = user;
+
+    next();
+  });
+});
+
+function loginRequired(req, res, next) {
+  if (!req.user) {
+    return res.redirect("/login");
+  }
+
+  next();
+}
 
 app.get("/", (req, res) => {
   res.render("index");
@@ -82,20 +112,8 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.get("/dashboard", (req, res, next) => {
-  if (!(req.session && req.session.userId)) {
-    return res.redirect("/login");
-  }
-
-  User.findById(req.session.userId, (err, user) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      return res.redirect("/login");
-    }
-    res.render("dashboard", { user: user });
-  });
+app.get("/dashboard", loginRequired, (req, res, next) => {
+  res.render("dashboard", { user: req.user });
 });
 
 // Tell Espress to start a web server on the port we defined earlier
