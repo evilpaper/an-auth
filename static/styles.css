@@ -68,6 +68,14 @@ h1 {
   color: var(--darkest-grey);
 }
 
+h2 {
+  font-family: sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3rem;
+  color: var(--darkest-grey);
+}
+
 p {
   color: var(--darkest-grey);
 }
@@ -106,6 +114,7 @@ button {
 
 .error {
   color: var(--error);
+  margin-top: 1rem;
 }
 
 .authlink {
@@ -123,7 +132,6 @@ button {
 .account {
   display: flex;
   align-items: center;
-  margin-top: 1em;
 }
 
 .avatar {

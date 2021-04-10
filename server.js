@@ -72,7 +72,7 @@ app.get("/login", (req, res) => {
 
 app.post("/login", (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
-    if (err || !user || req.body.password !== user.password) {
+    if (err || !user || !bcrypt.compareSync(req.body.password, user.password)) {
       return res.render("login", {
         error: "Incorrect email / password.",
       });

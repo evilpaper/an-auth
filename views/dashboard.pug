@@ -6,6 +6,7 @@ block vars
 block body
   .dashboard
     h1 Dashboard
+    h2= 'Welcome ' + user.firstName
     .account
       .avatar 
         span= user.firstName[0] + user.lastName[0]
