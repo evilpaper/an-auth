@@ -1,14 +1,21 @@
 {
   "name": "an-auth",
   "version": "1.0.0",
-  "description": "A Basic Authentication and Authorization",
+  "description": "A Basic Authentication",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evilpaper/an-auth"
+  },
   "author": "Pelle Lundgren",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evilpaper/an-auth/issues"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
