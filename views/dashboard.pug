@@ -11,3 +11,5 @@ block body
       .avatar 
         span= user.firstName[0] + user.lastName[0]
       p= user.firstName + ' ' + user.lastName
+    form.stack(method="post")
+      button(type="submit") Logout
