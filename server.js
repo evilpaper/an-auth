@@ -116,6 +116,11 @@ app.get("/dashboard", loginRequired, (req, res, next) => {
   res.render("dashboard", { user: req.user });
 });
 
+app.post("/dashboard", function (req, res, next) {
+  req.session.reset();
+  res.redirect("/login");
+});
+
 // Tell Espress to start a web server on the port we defined earlier
 // so we can run it locally and play around with it.
 app.listen(port, () => {
