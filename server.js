@@ -104,7 +104,7 @@ app.post("/login", (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     if (err || !user || !bcrypt.compareSync(req.body.password, user.password)) {
       return res.render("login", {
-        error: "Incorrect email / password.",
+        error: "Could not login. Incorrect email or password.",
       });
     }
     req.session.userId = user._id;

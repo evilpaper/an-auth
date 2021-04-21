@@ -6,6 +6,7 @@
 
 :root {
   --primary: hsl(212, 90%, 47%);
+  --dark-primary: hsl(212, 80%, 37%);
   --lightest: hsl(212, 100%, 98%);
   --darkest-grey: hsl(212, 100%, 8%);
   --darker-grey: hsla(212, 96%, 10%, 0.9);
@@ -56,7 +57,6 @@ section {
 form {
   display: flex;
   flex-direction: column;
-  margin-top: 0.6rem;
   min-width: 20rem;
 }
 
@@ -108,12 +108,22 @@ button {
   font-size: 1em;
 }
 
+button:hover {
+  background-color: var(--dark-primary);
+  border: 1px solid var(--dark-primary);
+}
+
 .stack * + * {
   margin-top: 1rem;
 }
 
 .error {
   color: var(--error);
+  margin-top: 1rem;
+}
+
+.transparent {
+  color: transparent;
   margin-top: 1rem;
 }
 
