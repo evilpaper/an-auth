@@ -101,7 +101,7 @@ input {
 
 button {
   padding: 0.8rem;
-  color: whitesmoke;
+  color: var(--lightest);
   background-color: var(--primary);
   border-radius: 0.4em;
   border: 1px solid var(--primary);
@@ -131,9 +131,27 @@ button:hover {
   color: var(--grey);
 }
 
-.description,
-.tagline {
+.description {
   margin-top: 2em;
+}
+
+.cta {
+  display: block;
+  margin-top: 1em;
+}
+
+.login,
+.register {
+  width: 100%;
+}
+
+.login {
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.login:hover {
+  color: var(--lightest);
 }
 
 .dashboard {

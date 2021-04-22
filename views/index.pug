@@ -7,6 +7,10 @@ block body
   section
     h1 Welcome
     h1 to An Auth.
-    p.description An tiny application to learn everything
-    p you need to know about authentication.
-    p.tagline Please #[a(href="/login") login] or #[a(href="/register") create account] to continue.
+    p.description A tiny application about everything
+    p you ever wanted to know about
+    p authentication.
+    a.cta(href="/login")
+      button.login(type="button") Login
+    a.cta(href="/register")
+      button.register(type="button") Create account
