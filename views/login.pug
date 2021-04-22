@@ -12,7 +12,6 @@ block body
     else
       p.transparent placeholder
     form.stack(method="post")
-      input(type="hidden", name="_csrf", value=csrfToken)
       label(for="email") Email
         input#email(type="email", name="email", required, autofocus)
       label(for="password") Password

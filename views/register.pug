@@ -10,7 +10,6 @@ block body
     if error
       p.error #{error}
     form.stack(method="post")
-      input(type="hidden", name="_csrf", value=csrfToken)
       label(for="firstName") First Name
         input#firstName(type="text", name="firstName", required, autofocus)
       label(for="lastName") Last Name

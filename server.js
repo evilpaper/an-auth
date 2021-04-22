@@ -122,7 +122,6 @@ app.post("/dashboard", function (req, res, next) {
 });
 
 // Tell Espress to start a web server on the port we defined earlier
-// so we can run it locally and play around with it.
 app.listen(port, () => {
   console.log(
     "\n" + "\x1b[36m%s\x1b[0m",
