@@ -9,6 +9,8 @@ block body
     h1 your account.
     if error
       p.error #{error}
+    else
+      p.transparent placeholder
     form.stack(method="post")
       label(for="firstName") First Name
         input#firstName(type="text", name="firstName", required, autofocus)

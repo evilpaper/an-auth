@@ -4,12 +4,12 @@ block vars
   - var title = 'Dashboard';
 
 block body
-  .dashboard
+  .dashboard.stack
     h1 Dashboard
     h2= 'Welcome ' + user.firstName
     .account
       .avatar 
         span= user.firstName[0] + user.lastName[0]
       p= user.firstName + ' ' + user.lastName
-    form.stack(method="post")
-      button(type="submit") Logout
+    form(method="post")
+      button.logout(type="submit") Logout

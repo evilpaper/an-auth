@@ -1,11 +1,15 @@
 // Import the Express library
 const express = require("express");
+
+// Import body parser, a Node.js middleware, make request bodies available under req.body property
 const bodyParser = require("body-parser");
+
+// Import path, provides utilities for working with files and directory paths
 const path = require("path");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-// Define an express application
+// Define an Express application
 const app = express();
 
 // Create a binding for the port we will use
