@@ -15,20 +15,14 @@ const app = express();
 // Create a binding for the port we will use
 const port = 3000;
 
+const models = require("./models");
+
 const settings = require("./settings");
 const sessions = require("client-sessions");
 
 mongoose.connect("mongodb://localhost/an-auth");
 
-let User = mongoose.model(
-  "User",
-  new mongoose.Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-  })
-);
+// let User =
 
 app.set("view engine", "pug");
 app.set("staticDirectory", path.join(__dirname, "static"));
@@ -47,7 +41,7 @@ app.use((req, res, next) => {
     return next();
   }
 
-  User.findById(req.session.userId, (err, user) => {
+  models.User.findById(req.session.userId, (err, user) => {
     if (err) {
       return next(err);
     }
@@ -85,7 +79,7 @@ app.post("/register", (req, res) => {
   let hash = bcrypt.hashSync(req.body.password, 14);
   req.body.password = hash;
 
-  let user = new User(req.body);
+  let user = new models.User(req.body);
 
   user.save((err) => {
     if (err) {
@@ -105,10 +99,10 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  User.findOne({ email: req.body.email }, (err, user) => {
+  models.User.findOne({ email: req.body.email }, (err, user) => {
     if (err || !user || !bcrypt.compareSync(req.body.password, user.password)) {
       return res.render("login", {
-        error: "Could not login. Incorrect email or password.",
+        error: "Sorry, don't recongnise email or password",
       });
     }
     req.session.userId = user._id;
